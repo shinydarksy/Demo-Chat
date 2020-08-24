@@ -14,24 +14,23 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.redirect('/login')
 })
-var userName = ['AAA','BBB']
+var userName = ['AAA','BBB','CCC']
 app.get('/login', (req, res) => {
     console.log(userName)
-    res.render('main', { errs: 0 })
+    res.render('main', { errs: 0,page:'login'})
 })
 app.post('/login', (req, res) => {
     if (userName.indexOf(req.body.txtName)>=0) {
-        res.render('main', { errs: req.body.txtName })
+        res.render('main', { errs: req.body.txtName,page:'login' })
         return
     } else {
         userName.push(req.body.txtName)
-        console.log(userName)
         res.redirect('/message')
     }
 })
 app.get('/message', (req, res) => {
-    res.json('message')
+    res.render('main',{page:'message'})
 })
 io.on('connection', (socket) => {
-    
+    socket.emit('send-userName',userName)
 })

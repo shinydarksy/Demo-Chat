@@ -18,13 +18,14 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/CSS/layout.css">
     <script src="/socket.io/socket.io.js"></script>
+    <script src="JS/jquery-3.5.1.min.js"></script>
     <script src="/JS/processing.js"></script>
 </head>
 
 <body>
     <section>
         <div class="container">
-            <%-include('./admin/login')%>
+            <%-include('./admin/'+page)%>
         </div>
     </section>
 </body>
