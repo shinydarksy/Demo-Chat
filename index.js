@@ -14,7 +14,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.redirect('/login')
 })
-var userName = []
+var userName = ['AAA','BBB','CCC']
 app.get('/login', (req, res) => {
     res.render('main', { errs: 0,page:'login'})
 })
@@ -33,6 +33,9 @@ app.get('/message', (req, res) => {
 io.on('connection', (socket) => {
     socket.emit('send-userName',userName)
     socket.on('user-send-updateUser',(data)=>{
-        socket.emit('server-send-updateUser',data)
+        if (!(userName.indexOf(data)>=0)){
+            socket.broadcast.emit('server-send-updateUser',data)
+        }
     })
+  
 })

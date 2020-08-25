@@ -6,15 +6,15 @@ $('document').ready(() => {
             user.append('<li class="list-group-item bg-primary title-list ">' + element + '</li>')
         });
     })
-    var updateUser
-    $('.inputEmail').change(() => {
-        console.log('a')
+    var input = $('#input')
+    input.on('change', () => {
+        console.log(input.val())
     })
-    socket.emit('user-send-updateUser', updateUser)
-    socket.on('server-send-updateUser', (data) => {
-        console.log(data)
+    var button = $('#button')
+    button.click(()=>{
+        socket.emit('user-send-updateUser',input.val())
     })
-    $('#submit').click(() => {
-
+    socket.on('server-send-updateUser',(data)=>{
+        user.append('<li class="list-group-item bg-primary title-list ">' + data + '</li>')
     })
 })
