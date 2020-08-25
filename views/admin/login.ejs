@@ -3,7 +3,7 @@
         <div class="card card-signin my-5">
             <div class="card-body">
                 <h5 class="card-title text-center">Demo Chat</h5>
-                <form class="form-signin" action="login" method="POST">
+                <form class="form-signin" >
                     <div class="form-label-group">
                         <%if(errs){%>
                             <div class="alert alert-warning"><%-errs%> is Available</div>
@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6 mx-auto m-2">
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng
+                            <button id="submit" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Đăng
                                 nhập</button>
                             <hr class="my-4">
                         </div>

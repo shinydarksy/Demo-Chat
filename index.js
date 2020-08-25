@@ -14,9 +14,8 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
     res.redirect('/login')
 })
-var userName = ['AAA','BBB','CCC']
+var userName = []
 app.get('/login', (req, res) => {
-    console.log(userName)
     res.render('main', { errs: 0,page:'login'})
 })
 app.post('/login', (req, res) => {
@@ -33,4 +32,7 @@ app.get('/message', (req, res) => {
 })
 io.on('connection', (socket) => {
     socket.emit('send-userName',userName)
+    socket.on('user-send-updateUser',(data)=>{
+        socket.emit('server-send-updateUser',data)
+    })
 })
