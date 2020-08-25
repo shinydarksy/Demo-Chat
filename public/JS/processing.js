@@ -7,11 +7,9 @@ $('document').ready(() => {
         });
     })
     var updateUser
-    $('#inputEmail').change(() => {
-        updateUser = $('#inputEmail').val()
-        console.log('123')
+    $('.inputEmail').change(() => {
+        console.log('a')
     })
-    
     socket.emit('user-send-updateUser', updateUser)
     socket.on('server-send-updateUser', (data) => {
         console.log(data)
